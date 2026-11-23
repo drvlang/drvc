@@ -59,7 +59,9 @@ Use `drvc.lib.mkMonorepoFlake { root = ./.; }` for this layout. Run `drvc test a
 
 For a checkout of independent Meson projects with no root `meson.build`, command selection automatically isolates the member directory for builds and tests.
 
-To cache a compiled C library across application edits, add e.g. `"separateSubprojects": {"base": {}, "greeting": {"dependsOn": ["base"]}}` under `drvc` in the manifest. Include both source directories in `files`. Each must be a self-contained Meson project under `subprojects/` that installs a library the consumer can find with `dependency()`. Set a component's `mesonFlags` to reproduce its native fallback options. With this configuration, editing the application recompiles only the application. Editing `base` also rebuilds `greeting` and the application. Other C objects compile together within their selected project. [Working C example](https://github.com/drvlang/drvcpp/tree/main/tests/components)
+Compiled C outputs and checks are content-addressed by default. To cache a library separately, add e.g. `"separateSubprojects": {"base": {}, "greeting": {"dependsOn": ["base"]}}` under `drvc` in the manifest. Each component must be a self-contained Meson project under `subprojects/` that installs a library the consumer can find with `dependency()`. Set a component's `mesonFlags` to match its native fallback options.
+
+List the application inputs in `files`. The builder reads each declared component from its own directory. Include a component header, version file, or asset in `files` if the application reads it directly. Editing `base` can then reuse `greeting` and the application when the installed library and its references are identical. A changed library reaches both consumers. [Working C example](https://github.com/drvlang/drvcpp/tree/main/tests/components)
 
 For Nix-defined configurations, `mkPackage`, `mkTest` and `mkApp` accept a `system` and an explicit `src` from `drvc.lib.projectSource`. `mkMonorepoFlake` also accepts a `commands` map and a `srcForTarget` function. [Per-target Nix example](tests/default.nix)
 

@@ -7,7 +7,7 @@ let
   };
   root = /. + builtins.unsafeDiscardStringContext upstream.outPath;
   mmdoc = self.lib.mkPackage { inherit system root; };
-in pkgs.runCommand "drvc-mmdoc-manual" {} ''
+in pkgs.runCommand "drvc-mmdoc-manual" { __contentAddressed = true; } ''
   ${mmdoc}/bin/mmdoc mmdoc ${root + "/doc"} manual
   grep -Fq 'Minimal Markdown Documentation' manual/single/index.html
   grep -Fq 'contributing/' manual/multi/index.html

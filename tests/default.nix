@@ -9,6 +9,7 @@ let
   workspace = self.lib.mkMonorepoFlake { inherit commands srcForTarget; };
   apps = workspace.apps.${system};
 in pkgs.runCommand "drvc-test-workspace" {
+  __contentAddressed = true;
   checks = builtins.attrValues workspace.checks.${system};
 } ''
   test "$(${apps.api.program} 'two words')" = 'api shared two words'
