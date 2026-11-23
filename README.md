@@ -61,4 +61,4 @@ For Nix-defined configurations, `mkPackage`, `mkTest` and `mkApp` accept a `syst
 
 ## Benchmark
 
-`nix run .#bench -- --runs 5` builds [mmdoc 0.27.0](https://github.com/ryantm/mmdoc/tree/f9f360bb2565a6bf1c01e63a3d68109b6dd00257), runs its upstream tests, and renders its own documentation. Each timed trial repeats the manual render and checks both HTML formats and the search asset, with the compiler and mmdoc already cached. [Benchmark definition](benchmarks/default.nix)
+`nix run .#bench -- --runs 5` builds [a pinned mmdoc revision](https://github.com/ryantm/mmdoc/tree/684ba64be908128d2092dfd13675397d4272b349), runs its upstream tests, and renders its own documentation. Each timed trial repeats the manual render and checks both HTML formats and the search asset, with the compiler and mmdoc already cached. [Benchmark definition](benchmarks/default.nix)

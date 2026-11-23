@@ -2,19 +2,11 @@
 let
   upstream = builtins.fetchTree {
     type = "github"; owner = "ryantm"; repo = "mmdoc";
-    rev = "f9f360bb2565a6bf1c01e63a3d68109b6dd00257"; # 0.27.0
-    narHash = "sha256-aq/+/geFENuDHk5yu6eFw5/TKpAANMO0kVcdq8uSW/c=";
+    rev = "684ba64be908128d2092dfd13675397d4272b349"; # 0.27.0 with portable EOF checks
+    narHash = "sha256-m7Hlow2fG5EH/IGjxgGQ9yslFbLlesOb5yIExoNqPss=";
   };
   root = /. + builtins.unsafeDiscardStringContext upstream.outPath;
-  mmdoc = self.lib.mkPackage {
-    inherit system;
-    src = self.lib.projectSource {
-      inherit root;
-      files = map (file: root + "/${file}") [ "meson.build" "src" "test" ];
-    };
-    buildInputs = with pkgs; [ cmark-gfm libfastjson libzip ];
-    nativeBuildInputs = [ pkgs.xxd ];
-  };
+  mmdoc = self.lib.mkPackage { inherit system root; };
 in pkgs.runCommand "drvc-mmdoc-manual" {} ''
   ${mmdoc}/bin/mmdoc mmdoc ${root + "/doc"} manual
   grep -Fq 'Minimal Markdown Documentation' manual/single/index.html
