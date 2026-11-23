@@ -1,0 +1,7 @@
+{
+  "commands": { "api": "cmd/api", "worker": "cmd/worker" },
+  "drvc": {
+    "files": ["meson.build", "pkg"],
+    "targetFiles": { "api": ["cmd/api"], "worker": ["cmd/worker"] }
+  }
+}

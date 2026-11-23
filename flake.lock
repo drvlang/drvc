@@ -1,0 +1,68 @@
+{
+  "nodes": {
+    "drvcpp": {
+      "inputs": {
+        "drvkit": [
+          "drvkit"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795430345,
+        "narHash": "sha256-gYIg09x6nxL4DmCfUwe9cWk3YJn4zRAkGep35PbzKUk=",
+        "owner": "drvlang",
+        "repo": "drvcpp",
+        "rev": "5e5ebd4d582c31945f50c34efff39a8949f9cdf9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drvlang",
+        "repo": "drvcpp",
+        "type": "github"
+      }
+    },
+    "drvkit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795430289,
+        "narHash": "sha256-EiVv12FvqQ+QslTqJl3apifaOSZMou+9krn7RSQFsHQ=",
+        "owner": "drvlang",
+        "repo": "drvkit",
+        "rev": "457d3892e9ac699dbf4e5a507c6cffa7ecc8928b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drvlang",
+        "repo": "drvkit",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1780145889,
+        "narHash": "sha256-md0zn0RnwNvPyASas1yG5YUuwQ4ALA6ucL50l0DvqCo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8c50a710ddca43d7a530fb805ad55bde8d0141c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "drvcpp": "drvcpp",
+        "drvkit": "drvkit",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
