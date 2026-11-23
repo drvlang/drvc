@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795438299,
-        "narHash": "sha256-IcUTOUuBxZ1RXO1IRNh4txAQdalR9FCwELEsCOpn7Bw=",
+        "lastModified": 1795439389,
+        "narHash": "sha256-ge6oDOecxqyKGA08/i/OTd+9A4O7o79fM3mxQwJTyAU=",
         "owner": "drvlang",
         "repo": "drvcpp",
-        "rev": "72e7bf6f639b36d94fa13e45f25c8dab24ba98f9",
+        "rev": "bbc7e98e5e345896ba9b2f68acae7e63fe860b9c",
         "type": "github"
       },
       "original": {
