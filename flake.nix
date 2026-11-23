@@ -14,14 +14,15 @@
         inherit self nixpkgs;
         name = "drvc";
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-        projectArgs = import ./project.nix {
+        projectArgs = drvcpp.lib.mesonProjectArgs {
+          name = "drvc";
           inherit lib;
           inherit (tools.lib) projectSource;
           inherit (nixpkgs) legacyPackages;
         };
         mkPackage = drvcpp.lib.mesonBuilder { inherit drvkit; name = "drvc"; };
         mkTest = drvcpp.lib.mesonBuilder { inherit drvkit; name = "drvc"; test = true; };
-        selectTarget = { src, target, ... }: { inherit src; memberPath = target; };
+        selectTarget = drvcpp.lib.mesonSelectTarget lib;
         extraChecks = system: let args = { inherit self system; pkgs = nixpkgs.legacyPackages.${system}; }; in {
           benchmark = import ./benchmarks args;
           workspace = import ./tests args;

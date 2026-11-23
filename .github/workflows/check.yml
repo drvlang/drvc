@@ -19,3 +19,4 @@ jobs:
             allow-import-from-derivation = false
       - run: nix flake check -L
       - run: bash tests/integration.sh
+      - run: bash "$(nix flake archive --json | jq -er '.inputs.drvcpp.path')/tests/components.sh" drvc
