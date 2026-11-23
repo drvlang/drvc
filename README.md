@@ -43,6 +43,8 @@ For dependencies fetched from source, include `subprojects` in the file list. dr
 
 ## Monorepos
 
+To build and check the same target on an x86-64 Linux runner, use `nix build --no-link .#api .#checks.x86_64-linux.api`. With default test settings, Meson compiles and tests the target once.
+
 Map names to Meson member directories in `drvlang.json`. Use `files` for shared code and `targetFiles` for sources specific to each command. The root Meson project in the [working example](tests/workspace) enters each command directory when it exists.
 
 ```json
