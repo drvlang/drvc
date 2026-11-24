@@ -20,8 +20,8 @@
           inherit (tools.lib) projectSource;
           inherit (nixpkgs) legacyPackages;
         };
-        mkPackage = drvcpp.lib.mesonBuilder { inherit drvkit; name = "drvc"; };
-        mkTest = drvcpp.lib.mesonBuilder { inherit drvkit; name = "drvc"; test = true; };
+        mkPackage = drvcpp.lib.mesonBuilder { inherit drvkit nixpkgs; name = "drvc"; };
+        mkTest = drvcpp.lib.mesonBuilder { inherit drvkit nixpkgs; name = "drvc"; test = true; };
         selectTarget = drvcpp.lib.mesonSelectTarget lib;
         extraChecks = system: let args = { inherit self system; pkgs = nixpkgs.legacyPackages.${system}; }; in {
           benchmark = import ./benchmarks args;
