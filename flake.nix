@@ -12,6 +12,11 @@
       lib = nixpkgs.lib;
       tools = import drvkit {
         inherit self nixpkgs;
+        toolSource = {
+          root = ./.;
+          files = [ ];
+          benchmarkFiles = [ ./benchmarks/default.nix ];
+        };
         name = "drvc";
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
         projectArgs = drvcpp.lib.mesonProjectArgs {
